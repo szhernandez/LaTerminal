@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="226" pageHeight="340" columnWidth="216" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" isIgnorePagination="true" uuid="c4e848da-a067-47e3-a5f4-b7b52f2b17b5">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Logo" class="java.lang.Object"/>
+	<parameter name="idequipaje" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT equipaje.idEquipaje, equipaje.propietario, equipaje.estado, equipaje.importe, equipaje.pago, equipaje.fecha, equipaje.hora,equipaje.idCaja,
+cliente.idCliente,cliente.nombre,cliente.apellidos,cliente.tipoCliente,
+trabajador.idTrab,trabajador.nombre,trabajador.apellidos,
+detalle_equipaje.idArt,articulo.descripcion,detalle_equipaje.precio, detalle_equipaje.precioCompra,
+detalle_equipaje.unidades, detalle_equipaje.tiempo, detalle_equipaje.subtotal, detalle_equipaje.observ,
+detalle_equipaje.fechainicio, detalle_equipaje.fechafin
+FROM equipaje,detalle_equipaje,articulo,cliente,trabajador WHERE 
+equipaje.idEquipaje = detalle_equipaje.idEquipaje AND detalle_equipaje.idArt=articulo.idArt 
+and equipaje.idCliente=cliente.idCliente and equipaje.idTrab=trabajador.idTrab
+and equipaje.idEquipaje = $P{idequipaje}]]>
+	</queryString>
+	<field name="idEquipaje" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Esta tabla continen todas las subventas que le corresponden a la compra del cliente]]></fieldDescription>
+	</field>
+	<field name="propietario" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[Estado actual en el que se encuentra la venta. Pudiendo ser: Finalizada, en proceso, por pagar]]></fieldDescription>
+	</field>
+	<field name="importe" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Dinero total que se requiere pagar]]></fieldDescription>
+	</field>
+	<field name="pago" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Dinero recibido por parte del cliente]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idCaja" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[Tipo del cliente al que se le vende(Farmacia, Doctor, Gral)]]></fieldDescription>
+	</field>
+	<field name="idTrab" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idArt" class="java.lang.String">
+		<fieldDescription><![CDATA[id del articulo con el que sera enlazado]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[Describe el producto a registrar]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.lang.Double">
+		<fieldDescription><![CDATA[Precio del articulo en cuestion. Es el precio al que el usuario decide darlo]]></fieldDescription>
+	</field>
+	<field name="precioCompra" class="java.lang.Double">
+		<fieldDescription><![CDATA[Es el precio de compra, se utilizara para calcular la utilidad]]></fieldDescription>
+	</field>
+	<field name="unidades" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tiempo" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subtotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[total de dinero requerido por esa venta]]></fieldDescription>
+	</field>
+	<field name="observ" class="java.lang.String">
+		<fieldDescription><![CDATA[Observaciones que se deseen registrar para esa venta]]></fieldDescription>
+	</field>
+	<field name="fechainicio" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[Fecha y hora en que fue creada o modificada el detalle de venta]]></fieldDescription>
+	</field>
+	<field name="fechafin" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="9" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="94" splitType="Stretch">
+			<textField>
+				<reportElement x="85" y="48" width="128" height="15" uuid="476b2ffb-520e-4aea-a4f8-ccbf1918d65a"/>
+				<textFieldExpression><![CDATA[$F{propietario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="48" width="63" height="15" uuid="a315ac5f-e9b6-4576-9b33-ecc98be07196"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Propietario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="34" width="63" height="15" uuid="1bd8255b-3d20-4979-b1b5-3987ec825ac6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo equipaje]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="34" width="65" height="15" uuid="3089e89e-6f12-42be-ba8b-90dc80aabaeb"/>
+				<textFieldExpression><![CDATA[$F{idEquipaje}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="63" width="63" height="15" uuid="e5c087ea-344e-4a5f-aea6-f73c5dd7cd9d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total piezas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="63" width="128" height="15" uuid="74ec49ef-b926-4ae5-a7ef-3dda97a9abc7"/>
+				<textFieldExpression><![CDATA[$F{unidades}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="78" width="52" height="15" uuid="e758c1ff-cd01-48ff-8f40-3f33f92ab752"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora Inicio]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="78" width="128" height="15" uuid="0b9a5da2-e749-425e-a3c2-6c4020831323"/>
+				<textFieldExpression><![CDATA[$F{fechainicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="19" width="216" height="15" uuid="1b7ed34d-a5cb-419b-99dd-d3f7693ad983"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERMINAL ZINACATEPEC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="4" width="216" height="15" uuid="2a17fe96-401d-45f6-a3c4-55ae4a831d37"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GUARDA EQUIPAJE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>

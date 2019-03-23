@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed5e0527-5dc8-4216-9d2c-a54808686636">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nombreagente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.Object"/>
+	<parameter name="marcaagua" class="java.lang.Object"/>
+	<queryString>
+		<![CDATA[select * from articulo,empresa ORDER BY descripcion;]]>
+	</queryString>
+	<field name="idArt" class="java.lang.String">
+		<fieldDescription><![CDATA[Codigo de barras del producto]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[Describe el producto a registrar]]></fieldDescription>
+	</field>
+	<field name="marca" class="java.lang.String">
+		<fieldDescription><![CDATA[Marca del producto a registrar]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[Tipo de producto o clasificacion(medicamento, material de curacion, abarrotes, ropa, etc)]]></fieldDescription>
+	</field>
+	<field name="impuesto" class="java.lang.String">
+		<fieldDescription><![CDATA[impuesto aplicable a la compra. Por defaul gral, siendo un impuesto de tasa 0. Pudiendose modificar en la tabla correspondiente]]></fieldDescription>
+	</field>
+	<field name="precioCompra" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Precio al que el producto se compro con el proveedor]]></fieldDescription>
+	</field>
+	<field name="precioVenta1" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Precio al que el producto se vendera]]></fieldDescription>
+	</field>
+	<field name="precioVenta2" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Precio al que el producto se vendera]]></fieldDescription>
+	</field>
+	<field name="precioVenta3" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Precio al que el producto se vendera]]></fieldDescription>
+	</field>
+	<field name="precioVenta4" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Precio al que el producto se vendera]]></fieldDescription>
+	</field>
+	<field name="precioVenta5" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Precio al que el producto se vendera]]></fieldDescription>
+	</field>
+	<field name="imagen" class="java.lang.String">
+		<fieldDescription><![CDATA[Url de alguna imagen que se muestre]]></fieldDescription>
+	</field>
+	<field name="Existencia" class="java.lang.Double">
+		<fieldDescription><![CDATA[existencia inical del producto]]></fieldDescription>
+	</field>
+	<field name="stockMin" class="java.lang.Double">
+		<fieldDescription><![CDATA[minimo del articulos que se deben tener en almacen]]></fieldDescription>
+	</field>
+	<field name="stockMax" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observaciones" class="java.lang.String">
+		<fieldDescription><![CDATA[Observaciones que de desean tener del articulo]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.lang.String">
+		<fieldDescription><![CDATA[fecha de alta o de edicion del articulo]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peso" class="java.lang.Float">
+		<fieldDescription><![CDATA[Peso para la venta del articulo. Cuando esto aplique.]]></fieldDescription>
+	</field>
+	<field name="idEmpresa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RFC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Calle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Colonia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CP" class="java.lang.String">
+		<fieldDescription><![CDATA[Codigo postal]]></fieldDescription>
+	</field>
+	<field name="Ciudad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Pais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Representante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="750" splitType="Stretch">
+			<image>
+				<reportElement mode="Opaque" x="121" y="171" width="344" height="302" uuid="0643fd57-774e-47e8-9efe-6ab3554a3a59"/>
+				<imageExpression><![CDATA[$P{marcaagua}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="3" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="165" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="457" y="29" width="58" height="15" uuid="2d172a78-1760-4759-a59b-3c0212960276"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy-MM-dd").format(new Date().getTime())]]></textFieldExpression>
+			</textField>
+			<textField pattern="hh:mm a">
+				<reportElement x="457" y="44" width="44" height="15" uuid="c8af2055-071a-473a-adc2-445157e0e80a"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("hh:mm").format(new Date().getTime())]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="29" width="74" height="79" uuid="50e59388-52b0-4144-9bd6-ac0ee9717e95"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="224" y="29" width="142" height="15" uuid="5c482155-7283-402d-9759-ed611d22ffba"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NEGOCIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="29" width="42" height="15" uuid="0f6bfb4c-5c98-4b23-9c88-73a63c167628"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="44" width="42" height="15" uuid="92b4b04f-f076-4dea-9fd2-f255ad57a30c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="106" width="142" height="15" uuid="13743777-ed60-41bf-b485-c2c10177e81d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPRESO POR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="172" y="124" width="241" height="15" uuid="8c97b0f5-758a-42b7-b062-3b540605da39"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{nombreagente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="20" uuid="7a12aa54-0141-4731-ac14-5e0537f4a43e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CATALOGO DE ARTICULOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="214" y="74" width="164" height="15" uuid="9784bbe3-d973-4f82-936b-59e53c34caf8"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TELEFONO: "+$F{Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="45" width="139" height="16" uuid="383dced0-fb99-4c21-9d41-a3387ad7872d"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="60" width="139" height="15" uuid="72d44ded-4d6b-43ac-b5c6-459dfe82abab"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RFC: "+$F{RFC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="1" width="116" height="20" uuid="d507ea7b-d0ec-4cf3-ab7d-bbbb6cc1cc64"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="1" width="238" height="20" uuid="92073864-1706-4ace-acb8-767dbe56c113"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="1" width="64" height="20" uuid="ad6adc0b-2f48-4199-8beb-955fa33fa8fa"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EXISTENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="1" width="80" height="20" uuid="758f3d52-b517-47a3-8477-ab8823852286"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[STOCK MIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="508" y="1" width="64" height="20" uuid="2098bf60-e194-4162-8108-08e353380166"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[STOCK MAX]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="6" y="1" width="566" height="15" forecolor="#FCE5CF" backcolor="#FCE5CF" uuid="e08923ff-8115-466b-b828-4bf3a8e42a76">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="5" y="0" width="116" height="15" uuid="c53feeb3-d2c9-49a9-b8e9-fe114f065222"/>
+				<textFieldExpression><![CDATA[$F{idArt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="0" width="238" height="15" uuid="44460053-cf6d-413b-a37c-08dc841b8a10"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="364" y="0" width="64" height="15" uuid="deb9649f-149f-4393-ae11-d4199852e4c3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Existencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="0" width="80" height="15" uuid="22b378d4-3247-4cab-9af2-f1a775810240"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{stockMin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="508" y="0" width="64" height="15" uuid="2bd6f0f8-1185-4f7d-9029-a84a04817901"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{stockMax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="3" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="1" width="80" height="14" uuid="a18f1c8c-8e89-498f-81e6-24a32d33fae2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="1" width="40" height="14" uuid="57020654-a4ad-4de4-b3c4-f542379f05a1"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="10" splitType="Stretch"/>
+	</summary>
+</jasperReport>

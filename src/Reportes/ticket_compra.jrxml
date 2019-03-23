@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="169" pageHeight="340" columnWidth="169" leftMargin="0" rightMargin="0" topMargin="28" bottomMargin="28" isIgnorePagination="true" uuid="c4e848da-a067-47e3-a5f4-b7b52f2b17b5">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="80"/>
+	<parameter name="Logo" class="java.lang.Object"/>
+	<parameter name="idcompra" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT proveedor.idProveedor,proveedor.nombre,proveedor.representante, detallecompra.idArt,detallecompra.precio,detallecompra.unidades,detallecompra.precio*detallecompra.unidades as importedetallecompra, compra.idCompra,compra.importe,compra.fecha, articulo.descripcion,trabajador.idTrab, trabajador.nombre as nombretrab,trabajador.apellidos as apellidostrab,empresa.idEmpresa,empresa.Nombre as nombreempresa,empresa.RFC,empresa.Calle,empresa.Numero,empresa.Colonia,empresa.CP,empresa.Ciudad,empresa.Estado,empresa.Pais,empresa.Telefono,empresa.Representante from proveedor,detallecompra,compra,articulo,trabajador, empresa where articulo.idArt=detallecompra.idArt and proveedor.idProveedor=compra.idProveedor and trabajador.idTrab=compra.idTrab and detallecompra.idCompra= compra.idCompra and compra.idCompra = $P{idcompra}]]>
+	</queryString>
+	<field name="idProveedor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[nombre completo de la empresa]]></fieldDescription>
+	</field>
+	<field name="representante" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre de la persona que representa a la empresa]]></fieldDescription>
+	</field>
+	<field name="idArt" class="java.lang.String">
+		<fieldDescription><![CDATA[Id del articulo en cuestio]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Precio al que se esta comprando el articulo]]></fieldDescription>
+	</field>
+	<field name="unidades" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Unidades del articulo a comprar]]></fieldDescription>
+	</field>
+	<field name="importedetallecompra" class="java.math.BigDecimal"/>
+	<field name="idCompra" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="importe" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[Fecha de creacion]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[Describe el producto a registrar]]></fieldDescription>
+	</field>
+	<field name="idTrab" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombretrab" class="java.lang.String"/>
+	<field name="apellidostrab" class="java.lang.String"/>
+	<field name="idEmpresa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreempresa" class="java.lang.String"/>
+	<field name="RFC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Calle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Colonia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CP" class="java.lang.String">
+		<fieldDescription><![CDATA[Codigo postal]]></fieldDescription>
+	</field>
+	<field name="Ciudad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Pais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="52" splitType="Stretch">
+			<image>
+				<reportElement x="20" y="2" width="92" height="50" uuid="ba8f10b8-8cfb-4465-aa3f-d6350f0cf71b"/>
+				<imageExpression><![CDATA[$P{Logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="113" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="55" width="139" height="12" uuid="0b1caf24-4021-4517-a5c3-4c536c51186a"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REALIZO: "+$F{nombretrab}+" "+$F{apellidostrab}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="66" width="139" height="12" uuid="423a0db6-44b1-4bea-b713-246ba3980fa9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PROVEEDOR: "+$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="89" width="138" height="12" uuid="5890eeb0-1577-4370-9e62-3bd2f1d61ed8"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SERIE DOC "+$P{idcompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="101" width="138" height="12" uuid="568cd320-2994-4785-93fc-c36c4d370c2e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fecha "+$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="78" width="139" height="12" uuid="a7b8eb56-abf5-4bc2-b52e-1ee3c3e6de81"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REPRESENTANTE: "+$F{representante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="16" width="139" height="10" uuid="1c78b27f-aa8e-4d49-8018-64cdc67c04ca"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Calle}+" #"+$F{Numero}+", "+$F{Colonia}+" CP "+$F{CP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="25" width="139" height="10" uuid="369f7c41-78e7-4f7e-9b91-fe7b4b92615c"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ciudad}+", "+$F{Estado}+" "+$F{Pais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="45" width="139" height="10" uuid="9e04092f-86e7-4d6c-aab5-5a3c2c55efe4"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TELEFONO: "+$F{Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="35" width="139" height="10" uuid="b67c1667-af78-4789-abb8-2b02f6b0155f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RFC: "+$F{RFC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="139" height="16" uuid="1734fe52-37cd-4001-b253-d80da3d40729"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreempresa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15">
+			<staticText>
+				<reportElement x="1" y="0" width="25" height="12" uuid="52d5316b-5a30-48a5-a8d7-d99aef1e8ff2"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="3" width="139" height="12" uuid="194bd394-f89a-4131-ab41-62e0ac8d122d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[CANT  |  DESCRIP  |  PRECIO  |  IMPORTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="1" width="137" height="1" uuid="7ab35ff4-9d81-488e-9457-563f03b18cc1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23">
+			<textField>
+				<reportElement x="2" y="0" width="137" height="10" uuid="db3e5683-4e7d-48ab-9ee9-d80569eb541e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["*** "+ $F{unidades} +" | "+$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="9" width="114" height="10" uuid="c1e7df49-4d75-48f9-a36a-0b5b44ebd133"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["| "+ $F{precio} +" | "+$F{importedetallecompra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="52" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="3" width="139" height="1" uuid="e1432c22-a45a-46b8-a3ad-8ee61f2b69df"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="29" width="139" height="12" uuid="9afc4259-d96b-4568-af8d-fb6c5103041c"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La compra realizo un ajuste en ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="40" width="139" height="12" uuid="0bf0601b-adbb-4a0c-9e72-a62c5e4b0182"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[las existencias del inventario]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="9" width="139" height="12" uuid="e4b5340d-987a-4fd0-9c26-e830ebb90f62"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL: $"+$F{importe}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

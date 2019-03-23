@@ -1,0 +1,1 @@
+logotipo reducido: es usado al imprimir los comprobantes en jasper

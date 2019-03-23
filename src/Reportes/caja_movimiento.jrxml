@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="226" pageHeight="340" columnWidth="216" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" isIgnorePagination="true" uuid="c4e848da-a067-47e3-a5f4-b7b52f2b17b5">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Logo" class="java.lang.Object"/>
+	<parameter name="id_movimiento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT trabajador.nombre,trabajador.apellidos,
+movimiento_caja.idmovimiento,movimiento_caja.Monto,movimiento_caja.Concepto,movimiento_caja.fecha, movimiento_caja.IdTrab,movimiento_caja.idCaja 
+FROM movimiento_caja,trabajador where movimiento_caja.idmovimiento= $P{id_movimiento}]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idmovimiento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Monto" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Concepto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IdTrab" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idCaja" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="6" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="116" splitType="Stretch">
+			<textField>
+				<reportElement x="83" y="48" width="128" height="15" uuid="476b2ffb-520e-4aea-a4f8-ccbf1918d65a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}+" "+$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="48" width="63" height="15" uuid="a315ac5f-e9b6-4576-9b33-ecc98be07196"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trabajador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="34" width="63" height="15" uuid="1bd8255b-3d20-4979-b1b5-3987ec825ac6"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA Y HORA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="63" width="63" height="15" uuid="e5c087ea-344e-4a5f-aea6-f73c5dd7cd9d"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="63" width="128" height="15" uuid="74ec49ef-b926-4ae5-a7ef-3dda97a9abc7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Concepto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="19" width="216" height="15" uuid="1b7ed34d-a5cb-419b-99dd-d3f7693ad983"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GUARDA EQUIPAJE TERMINAL ZINACATEPEC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="78" width="78" height="15" uuid="c37399de-6223-413c-bd67-601543cce048"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Efectivo retirado]]></text>
+			</staticText>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="95" y="78" width="97" height="15" uuid="a4383674-cc30-4b73-9c52-cb28338f3dcd"/>
+				<textElement>
+					<font size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Monto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="17" y="4" width="199" height="15" uuid="ff29fb3d-ae1c-4ad2-b360-f70197461f89"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MOVIMIENTO EN CAJA "+$F{idCaja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="34" width="131" height="15" uuid="26897645-0724-4e6f-8b68-43e7e76fdec1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>
